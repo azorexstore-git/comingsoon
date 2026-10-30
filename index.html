@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
 <title>സ്പാർക്കോ കൊതുക് ബാറ്റ് – കൊതുകിന് ഇവിടെ പ്രവേശനമില്ല</title>
-<meta name="description" content="റീച്ചാർജബിൾ കൊതുക് ബാറ്റ്. മഴക്കാലത്തും കൊതുകിനെ ഒറ്റ വീശലിൽ തീർക്കാം. കേരളത്തിൽ ക്യാഷ് ഓൺ ഡെലിവറി.">
+<meta name="description" content="റീച്ചാർജബിൾ കൊതുക് ബാറ്റ്. മഴക്കാലത്തും കൊതുകിനെ ഒറ്റ വീശലിൽ തീർക്കാം. കേരളത്തിൽ എവിടെയും ഡെലിവറി.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@500;800&family=Manjari:wght@400;700&display=swap" rel="stylesheet">
@@ -48,7 +49,7 @@ section{padding:64px 0}
 .why p{max-width:62ch;margin-top:14px;color:#DADAF5}
 .steps{list-style:none;padding:0;margin:30px 0 0;display:grid;gap:14px;counter-reset:s}
 .steps li{counter-increment:s;display:flex;gap:16px;align-items:flex-start}
-.steps li::before{content:counter(s,malayalam);flex:none;width:44px;height:44px;border-radius:50%;background:var(--gold);color:#1B1D4F;font:800 1.2rem/44px var(--hf);text-align:center}
+.steps li::before{content:counter(s);flex:none;width:44px;height:44px;border-radius:50%;background:var(--gold);color:#1B1D4F;font:800 1.2rem/44px var(--hf);text-align:center}
 table{width:100%;border-collapse:collapse;margin-top:26px;background:var(--card);border:1.5px solid var(--line)}
 td{padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top}
 td:first-child{font-weight:700;width:42%}
@@ -66,8 +67,7 @@ details p{padding-bottom:14px;color:var(--mute)}
 .site-footer ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:4px 22px;max-width:52rem;margin:0 auto 18px;padding:0}
 .site-footer a{display:inline-block;padding:8px 2px;font:500 .92rem/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#E6E6FF;text-decoration:none;opacity:.88}
 .site-footer a:hover,.site-footer a[aria-current]{opacity:1;color:var(--spark);text-decoration:underline}
-.site-footer .fwa{margin:0 0 14px}
-.site-footer .fwa a{color:var(--spark);font-weight:700;opacity:1}
+.site-footer .fwa{margin:0 0 14px;padding:8px 0;color:var(--spark);font:700 .92rem/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 .site-footer small{display:block;font:400 .8rem/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#B9BAE0}
 
 .bar{position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--night);display:flex;gap:10px;align-items:center;justify-content:space-between;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));color:#FFF3CF;border-top:3px solid var(--gold)}
@@ -111,7 +111,7 @@ body{font-size:1rem}}
 <section id="features"><div class="wrap">
   <h2>വീട്ടിൽ ഉണ്ടെങ്കിൽ ഉറക്കം സുഖം</h2>
   <div class="grid">
-    <div class="card"><div class="ic">🔋</div><h3>ഒരു ചാർജ്, ദിവസങ്ങളോളം</h3><p>USB കേബിൾ വഴി ചാർജ് ചെയ്യാം. പവർ കട്ട് ഉള്ള രാത്രികളിലും ബാറ്ററി കൂടെയുണ്ട്.</p></div>
+    <div class="card"><div class="ic">🔋</div><h3>ചാർജ് ചെയ്ത് വീണ്ടും ഉപയോഗിക്കാം</h3><p>ഒരിക്കൽ ചാർജ് ചെയ്താൽ ദിവസങ്ങളോളം ഉപയോഗിക്കാം. ഒറ്റത്തവണ ഉപയോഗിച്ച് കളയേണ്ട, പവർ കട്ട് ഉള്ള രാത്രികളിലും ബാറ്ററി കൂടെയുണ്ട്.</p></div>
     <div class="card"><div class="ic">🛡️</div><h3>3 ലെയർ സുരക്ഷാ ഗ്രിഡ്</h3><p>നടുവിലെ ഗ്രിഡിൽ മാത്രമാണ് ഷോക്ക്. പുറത്തെ കവചം കൈ തട്ടിയാലും സുരക്ഷിതം.</p></div>
     <div class="card"><div class="ic">🔦</div><h3>LED ടോർച്ച്</h3><p>ഇരുട്ടുമൂലയിലെ കൊതുകിനെയും കാണാം. കട്ടിലിന് അടിയിലും ജനലിന് പിന്നിലും.</p></div>
     <div class="card"><div class="ic">👆</div><h3>ഒറ്റ ബട്ടൺ</h3><p>അമർത്തിപ്പിടിച്ച് വീശിയാൽ മതി. പ്രായമായവർക്കും എളുപ്പത്തിൽ ഉപയോഗിക്കാം.</p></div>
@@ -127,15 +127,16 @@ body{font-size:1rem}}
 <section><div class="wrap">
   <h2>ഉപയോഗിക്കാൻ മൂന്ന് ഘട്ടം</h2>
   <ol class="steps">
-    <li><div><h3>ചാർജ് ചെയ്യൂ</h3><p>USB കേബിൾ കുത്തി ചുവന്ന ലൈറ്റ് പച്ചയാകുന്നത് വരെ കാത്തിരിക്കൂ.</p></div></li>
+    <li><div><h3>ചാർജ് ചെയ്യൂ</h3><p>ബാറ്റിലെ പ്ലഗ് നേരിട്ട് സോക്കറ്റിൽ കുത്തുക. ചുവന്ന ലൈറ്റ് പച്ചയാകുന്നത് വരെ കാത്തിരിക്കൂ.</p></div></li>
     <li><div><h3>ബട്ടൺ അമർത്തിപ്പിടിക്കൂ</h3><p>ഗ്രിഡ് ഓൺ ആകും. പച്ച ലൈറ്റ് തെളിയും.</p></div></li>
     <li><div><h3>കൊതുകിനെ വീശൂ</h3><p>പറക്കുന്ന കൊതുകിന് നേരെ പതുക്കെ വീശിയാൽ മതി.</p></div></li>
   </ol>
   <table>
     <tr><td>ബാറ്ററി</td><td>1200mAh റീച്ചാർജബിൾ</td></tr>
-    <tr><td>ചാർജിംഗ്</td><td>USB, ഏകദേശം 4 മണിക്കൂർ</td></tr>
+    <tr><td>ചാർജിംഗ്</td><td>ബിൽറ്റ്-ഇൻ ചാർജർ, ഏകദേശം 4 മണിക്കൂർ</td></tr>
     <tr><td>ഗ്രിഡ്</td><td>3 ലെയർ സേഫ്റ്റി മെഷ്</td></tr>
     <tr><td>വാറന്റി</td><td>6 മാസം</td></tr>
+    <tr><td>നിർമ്മാണം</td><td>ഇന്ത്യയിൽ നിർമ്മിച്ചത്</td></tr>
   </table>
 </div></section>
 
@@ -143,13 +144,11 @@ body{font-size:1rem}}
   <div class="price">
     <div>
       <h2>ഇന്ന് തന്നെ ഓർഡർ ചെയ്യൂ</h2>
-      <p>കേരളത്തിൽ എവിടെയും ക്യാഷ് ഓൺ ഡെലിവറി.</p>
+      <p>കേരളത്തിൽ എവിടെയും ഡെലിവറി.</p>
       <div style="margin-top:12px"><b>₹499</b><s>₹899</s></div>
     </div>
-    <div class="btns" style="margin-top:0">
-      <a class="btn" style="background:#1CA953;color:#fff" href="https://u.payu.in/zIviK3Tm7omW" rel="noopener">Buy Now</a>
-          <a class="btn alt" id="wa" href="https://wa.me/919048191673?text=%E0%B4%8E%E0%B4%A8%E0%B4%BF%E0%B4%95%E0%B5%8D%E0%B4%95%E0%B5%8D%20%E0%B4%B8%E0%B5%8D%E0%B4%AA%E0%B4%BE%E0%B5%BC%E0%B4%95%E0%B5%8D%E0%B4%95%E0%B5%8B%20%E0%B4%AC%E0%B4%BE%E0%B4%B1%E0%B5%8D%E0%B4%B1%E0%B5%8D%20%E0%B4%B5%E0%B4%BE%E0%B4%99%E0%B5%8D%E0%B4%99%E0%B4%A3%E0%B4%82">വാട്സ്ആപ്പിൽ ഓർഡർ ചെയ്യൂ</a>
-    </div>
+    <!-- <a class="btn" id="wa" href="https://wa.me/919048191673?text=%E0%B4%8E%E0%B4%A8%E0%B4%BF%E0%B4%95%E0%B5%8D%E0%B4%95%E0%B5%8D%20%E0%B4%B8%E0%B5%8D%E0%B4%AA%E0%B4%BE%E0%B5%BC%E0%B4%95%E0%B5%8D%E0%B4%95%E0%B5%8B%20%E0%B4%AC%E0%B4%BE%E0%B4%B1%E0%B5%8D%E0%B4%B1%E0%B5%8D%20%E0%B4%B5%E0%B4%BE%E0%B4%99%E0%B5%8D%E0%B4%99%E0%B4%A3%E0%B4%82">വാട്സ്ആപ്പിൽ ഓർഡർ ചെയ്യൂ</a> -->
+    <a class="btn" id="wa" href=" https://u.payu.in/zIviK3Tm7omW">ഓർഡർ ചെയ്യൂ</a>
   </div>
 </div></section>
 <div class="kasavu"></div>
@@ -159,7 +158,7 @@ body{font-size:1rem}}
   <details><summary>കുട്ടികൾക്ക് സുരക്ഷിതമാണോ?</summary><p>പുറത്തെ കവചം ഗ്രിഡിൽ തൊടുന്നത് തടയും. എങ്കിലും കുട്ടികളുടെ കയ്യിൽ കൊടുക്കാതെ, മുതിർന്നവർ ഉപയോഗിക്കുക.</p></details>
   <details><summary>മഴക്കാലത്ത് ഉപയോഗിക്കാമോ?</summary><p>ഉപയോഗിക്കാം. പക്ഷേ ബാറ്റ് നനയാതെ, ഈർപ്പം കുറഞ്ഞ സ്ഥലത്ത് സൂക്ഷിക്കുക.</p></details>
   <details><summary>എത്ര ദിവസത്തിൽ ഡെലിവറി കിട്ടും?</summary><p>കേരളത്തിൽ സാധാരണ 3 മുതൽ 5 ദിവസത്തിനുള്ളിൽ.</p></details>
-  <details><summary>കേടായാൽ എന്ത് ചെയ്യും?</summary><p>6 മാസത്തിനുള്ളിൽ വാട്സ്ആപ്പിൽ അറിയിച്ചാൽ മാറ്റിത്തരും.</p></details>
+  <details><summary>കേടായാൽ എന്ത് ചെയ്യും?</summary><p>6 മാസത്തിനുള്ളിൽ വാട്സ്ആപ്പിൽ (+91 90481 91673) മെസേജ് അയച്ചാൽ മാറ്റിത്തരും.</p></details>
 </div></section>
 </main>
 
@@ -167,7 +166,7 @@ body{font-size:1rem}}
 <footer class="site-footer">
   <div class="wrap">
     <div class="fbrand">⚡ സ്പാർക്കോ</div>
-    <p class="ftag">കേരളത്തിന്റെ സ്വന്തം കൊതുക് ബാറ്റ്</p>
+    <p class="ftag">ഇന്ത്യയിൽ നിർമ്മിച്ചത്, കേരളത്തിനായി</p>
     <nav aria-label="Policies and information" lang="en">
       <ul>
         <li><a href="contact-us.html">Contact Us</a></li>
@@ -181,7 +180,7 @@ body{font-size:1rem}}
         <li><a href="disclaimer.html">Disclaimer</a></li>
       </ul>
     </nav>
-    <p class="fwa" lang="en"><a href="https://wa.me/919048191673" rel="noopener">WhatsApp: +91 90481 91673</a></p>
+    <p class="fwa" lang="en">WhatsApp: +91 90481 91673</p>
     <small lang="en">&copy; 2026 Azorex &middot; Tirur, Kerala, India</small>
   </div>
 </footer>
