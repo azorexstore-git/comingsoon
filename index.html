@@ -60,6 +60,61 @@ details{background:var(--card);border:1.5px solid var(--line);border-radius:10px
 summary{cursor:pointer;padding:14px 0;font:800 1.05rem var(--hf);min-height:48px}
 details p{padding-bottom:14px;color:var(--mute)}
 
+/* ---------- Durability / "Why not cheap import bats" section ---------- */
+.dur{--bad:#B3261E;--badbg:#FDECEA;--good:#1E7A4C;--goodbg:#E7F5EC;padding-top:56px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .dur{--bad:#FF8A80;--badbg:#3A1A2A;--good:#5BE0A0;--goodbg:#12392F}}
+:root[data-theme="dark"] .dur{--bad:#FF8A80;--badbg:#3A1A2A;--good:#5BE0A0;--goodbg:#12392F}
+
+.dur-kicker{display:inline-block;background:var(--bad);color:#fff;font:800 .9rem var(--hf);padding:4px 14px;border-radius:99px;margin-bottom:14px}
+:root[data-theme="dark"] .dur-kicker{color:#2A0A0A}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .dur-kicker{color:#2A0A0A}}
+.dur h2{font-size:clamp(1.8rem,5.5vw,2.8rem);max-width:20ch}
+.dur h2 em{font-style:normal;color:var(--bad);text-decoration:underline wavy;text-decoration-thickness:2px;text-underline-offset:6px}
+.dur-lead{max-width:60ch;margin-top:16px;color:var(--mute);font-size:1.12rem}
+
+/* Lifespan bars */
+.dur-bars{margin-top:34px;background:var(--card);border:1.5px solid var(--line);border-radius:6px 22px 6px 22px;padding:22px 22px 26px;display:grid;gap:22px}
+.dur-row b{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font:800 1rem var(--hf);margin-bottom:8px}
+.dur-row b span:last-child{font-size:1.35rem}
+.dur-track{height:30px;background:rgba(128,128,160,.18);border-radius:99px;overflow:hidden}
+.dur-fill{height:100%;width:var(--w);border-radius:99px;transition:width 1.6s cubic-bezier(.2,.8,.2,1)}
+.dur-pre .dur-fill{width:0}
+.dur-fill.bad{background:var(--bad);min-width:14px}
+.dur-fill.good{background:linear-gradient(90deg,var(--gold),var(--spark));box-shadow:0 0 18px rgba(232,169,23,.55)}
+.dur-row.bad b span:last-child{color:var(--bad)}
+.dur-note{font-size:.9rem;color:var(--mute);margin-top:-8px}
+
+/* Side-by-side comparison */
+.dur-vs{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px;position:relative}
+.dur-col{border-radius:6px 22px 6px 22px;padding:24px 22px;border:2px solid var(--line)}
+.dur-col h3{font-size:1.25rem;font-weight:800;margin-bottom:14px}
+.dur-col ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.dur-col li{display:flex;gap:12px;align-items:flex-start;line-height:1.65}
+.dur-col li i{flex:none;font-style:normal;font-weight:800;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:.95rem;margin-top:2px}
+.dur-col li small{display:block;font:700 .8rem var(--hf);letter-spacing:.02em;opacity:.75}
+.dur-col.bad{background:var(--badbg);border-color:var(--bad)}
+.dur-col.bad h3{color:var(--bad)}
+.dur-col.bad li i{background:var(--bad);color:#fff}
+.dur-col.good{position:relative;background:var(--goodbg);border-color:var(--good);border-width:3px;box-shadow:0 10px 30px -10px rgba(30,122,76,.45);transform:translateY(-6px)}
+.dur-col.good h3{color:var(--good)}
+.dur-col.good li i{background:var(--good);color:#fff}
+:root[data-theme="dark"] .dur-col.bad li i,:root[data-theme="dark"] .dur-col.good li i{color:#08210F}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .dur-col.bad li i,:root:not([data-theme="light"]) .dur-col.good li i{color:#08210F}}
+.dur-badge{position:absolute;top:-14px;right:18px;z-index:2;background:var(--gold);color:#1B1D4F;font:800 .9rem var(--hf);padding:4px 14px;border-radius:99px}
+
+/* Promise strip */
+.dur-promise{margin-top:34px;background:var(--night);color:#FFF3CF;border-radius:6px 22px 6px 22px;border:3px solid var(--gold);padding:26px 24px;display:flex;flex-wrap:wrap;gap:22px;align-items:center;justify-content:space-between}
+.dur-promise h3{font-size:clamp(1.3rem,4vw,1.7rem);font-weight:800;color:var(--spark)}
+.dur-promise p{color:#DADAF5;margin-top:6px;max-width:46ch}
+
+@media (max-width:760px){
+  .dur-vs{grid-template-columns:1fr}
+  .dur-col.good{transform:none}
+  .dur-promise{flex-direction:column;align-items:flex-start}
+  .dur-promise .btn{width:100%;text-align:center}
+}
+@media (prefers-reduced-motion:reduce){.dur-fill{transition:none}}
+
 /* Footer */
 .site-footer{background:var(--night);color:#FFF3CF;padding:36px 0 44px;text-align:center}
 .site-footer .fbrand{font:800 1.1rem var(--hf);color:var(--spark);margin-bottom:4px}
@@ -108,6 +163,57 @@ body{font-size:1rem}}
 <div class="kasavu"></div>
 
 <main>
+<section class="dur" id="durability" aria-labelledby="dur-h"><div class="wrap">
+  <span class="dur-kicker">⚠️ വാങ്ങുന്നതിന് മുൻപ് ഒന്ന് ശ്രദ്ധിക്കൂ</span>
+  <h2 id="dur-h">ഒരാഴ്ച കൊണ്ട് <em>കേടാകുന്ന</em> ബാറ്റിന് പണം കളയരുത്.</h2>
+  <p class="dur-lead">വില കുറച്ച് കിട്ടുന്ന ചൈനീസ് ബാറ്റുകളിൽ പലതും ഒരാഴ്ച കഴിയുമ്പോഴേക്ക് ചാർജ് പിടിക്കില്ല, ഗ്രിഡ് പോകും. കേടായാൽ ചോദിക്കാൻ ആരുമില്ല, പണം പോയത് തന്നെ. സ്പാർക്കോ അങ്ങനെയല്ല.</p>
+
+  <div class="dur-bars" id="dur-bars">
+    <div class="dur-row bad">
+      <b><span>സാധാരണ ചൈനീസ് ബാറ്റ്</span><span>പലതും ~1 ആഴ്ച</span></b>
+      <div class="dur-track"><div class="dur-fill bad" style="--w:4%"></div></div>
+    </div>
+    <div class="dur-row good">
+      <b><span>⚡ സ്പാർക്കോ</span><span>6 മാസം വാറന്റി</span></b>
+      <div class="dur-track"><div class="dur-fill good" style="--w:100%"></div></div>
+    </div>
+    <p class="dur-note">ഒരാഴ്ചയും ആറ് മാസവും ഒരേ അളവിൽ വരച്ചാൽ ഇങ്ങനെയാണ്.</p>
+  </div>
+
+  <div class="dur-vs">
+    <div class="dur-col bad">
+      <h3>🪫 വില കുറഞ്ഞ ഇറക്കുമതി ബാറ്റ്</h3>
+      <ul>
+        <li><i>✕</i><div><small>ആയുസ്സ്</small>പലതും ഒരാഴ്ചയ്ക്കുള്ളിൽ കേടാകും</div></li>
+        <li><i>✕</i><div><small>കേടായാൽ</small>വിളിക്കാൻ നമ്പർ ഇല്ല, മാറ്റിത്തരില്ല</div></li>
+        <li><i>✕</i><div><small>സുരക്ഷ</small>നേർത്ത ഗ്രിഡ്, കൈ തട്ടിയാൽ ഷോക്ക് കിട്ടാൻ സാധ്യത</div></li>
+        <li><i>✕</i><div><small>ബാറ്ററി</small>ഒരാഴ്ച കഴിഞ്ഞാൽ ചാർജ് നിൽക്കില്ല</div></li>
+      </ul>
+    </div>
+
+    <div class="dur-col good">
+      <span class="dur-badge">✔ നമ്മുടെ ഉറപ്പ്</span>
+      <h3>⚡ സ്പാർക്കോ</h3>
+      <ul>
+        <li><i>✓</i><div><small>ആയുസ്സ്</small>6 മാസം വാറന്റി, ദീർഘകാലം ഉപയോഗിക്കാൻ നിർമ്മിച്ചത്</div></li>
+        <li><i>✓</i><div><small>കേടായാൽ</small>വാട്സ്ആപ്പിൽ ഒരു മെസേജ് അയച്ചാൽ മാറ്റിത്തരും</div></li>
+        <li><i>✓</i><div><small>സുരക്ഷ</small>3 ലെയർ സേഫ്റ്റി ഗ്രിഡ്, പുറത്തെ കവചം കൈയെ സംരക്ഷിക്കും</div></li>
+        <li><i>✓</i><div><small>ബാറ്ററി</small>1200mAh റീച്ചാർജബിൾ, ബിൽറ്റ്-ഇൻ ചാർജർ</div></li>
+        <li><i>✓</i><div><small>നിർമ്മാണം</small>ഇന്ത്യയിൽ നിർമ്മിച്ചത്</div></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="dur-promise">
+    <div>
+      <h3>കേടായാൽ പണം പോകില്ല, ബാറ്റ് മാറ്റിത്തരും.</h3>
+      <p>6 മാസത്തിനുള്ളിൽ പ്രശ്നം വന്നാൽ വാട്സ്ആപ്പിൽ (90481 91673) അറിയിച്ചാൽ മതി.</p>
+    </div>
+    <a class="btn" href="#order">സ്പാർക്കോ വാങ്ങൂ · ₹499</a>
+  </div>
+</div></section>
+<div class="kasavu"></div>
+
 <section id="features"><div class="wrap">
   <h2>വീട്ടിൽ ഉണ്ടെങ്കിൽ ഉറക്കം സുഖം</h2>
   <div class="grid">
@@ -156,9 +262,10 @@ body{font-size:1rem}}
 <section><div class="wrap">
   <h2>സംശയങ്ങൾ</h2>
   <details><summary>കുട്ടികൾക്ക് സുരക്ഷിതമാണോ?</summary><p>പുറത്തെ കവചം ഗ്രിഡിൽ തൊടുന്നത് തടയും. എങ്കിലും കുട്ടികളുടെ കയ്യിൽ കൊടുക്കാതെ, മുതിർന്നവർ ഉപയോഗിക്കുക.</p></details>
-  <details><summary>മഴക്കാലത്ത് ഉപയോഗിക്കാമോ?</summary><p>ഉപയോഗിക്കാം. പക്ഷേ ബാറ്റ് നനയാതെ, ഈർപ്പം കുറഞ്ഞ സ്ഥലത്ത് സൂക്ഷിക്കുക.</p></details>
+  <details><summary>ഒരു ചാർജിൽ എത്ര നേരം ഉപയോഗിക്കാം?</summary><p>ഒരിക്കൽ ചാർജ് ചെയ്താൽ ദിവസങ്ങളോളം ഉപയോഗിക്കാം.</p></details>
   <details><summary>എത്ര ദിവസത്തിൽ ഡെലിവറി കിട്ടും?</summary><p>കേരളത്തിൽ സാധാരണ 3 മുതൽ 5 ദിവസത്തിനുള്ളിൽ.</p></details>
-  <details><summary>കേടായാൽ എന്ത് ചെയ്യും?</summary><p>6 മാസത്തിനുള്ളിൽ വാട്സ്ആപ്പിൽ (+91 90481 91673) മെസേജ് അയച്ചാൽ മാറ്റിത്തരും.</p></details>
+  <details><summary>ഡെലിവറി ചാർജ് ഉണ്ടോ?</summary><p>ഇല്ല. കേരളത്തിൽ എവിടെയും ഫ്രീ ഡെലിവറി.</p></details>
+  <details><summary>കേടായാൽ എന്ത് ചെയ്യും?</summary><p>6 മാസത്തിനുള്ളിൽ വാട്സ്ആപ്പിൽ (90481 91673) മെസേജ് അയച്ചാൽ മാറ്റിത്തരും.</p></details>
 </div></section>
 </main>
 
@@ -166,7 +273,7 @@ body{font-size:1rem}}
 <footer class="site-footer">
   <div class="wrap">
     <div class="fbrand">⚡ സ്പാർക്കോ</div>
-    <p class="ftag">ഇന്ത്യയിൽ നിർമ്മിച്ചത്, കേരളത്തിനായി</p>
+    <!-- <p class="ftag">ഇന്ത്യയിൽ നിർമ്മിച്ചത്, കേരളത്തിനായി</p> -->
     <nav aria-label="Policies and information" lang="en">
       <ul>
         <li><a href="contact-us.html">Contact Us</a></li>
@@ -180,7 +287,7 @@ body{font-size:1rem}}
         <li><a href="disclaimer.html">Disclaimer</a></li>
       </ul>
     </nav>
-    <p class="fwa" lang="en">WhatsApp: +91 90481 91673</p>
+    <p class="fwa" lang="en">WhatsApp: 90481 91673</p>
     <small lang="en">&copy; 2026 Azorex &middot; Tirur, Kerala, India</small>
   </div>
 </footer>
@@ -207,6 +314,16 @@ body{font-size:1rem}}
     a.appendChild(b);
   }
   for(var i=0;i<5;i++)spawn();
+})();
+</script>
+<script>
+(function(){
+  var box=document.getElementById('dur-bars');
+  if(!box||!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  box.classList.add('dur-pre');
+  new IntersectionObserver(function(e,o){
+    if(e[0].isIntersecting){setTimeout(function(){box.classList.remove('dur-pre')},150);o.disconnect()}
+  },{threshold:.4}).observe(box);
 })();
 </script>
 </body>
