@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>പേയ്മെന്റ് പൂർത്തിയായില്ല – സ്പാർക്കോ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anek+Malayalam:wght@500;800&family=Manjari:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFF7E0;--ink:#1B1D4F;--mute:#4D4F7A;--card:#FFFFFF;--line:#E2C98A;--gold:#E8A917;--night:#171A4A;--spark:#FFE066;--cta:#1E7A4C;--ctaink:#fff;--bad:#C0392B;
+--hf:"Anek Malayalam","Noto Sans Malayalam","Nirmala UI",sans-serif;--bf:"Manjari","Noto Sans Malayalam","Nirmala UI",sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101238;--ink:#FFF3CF;--mute:#B9BAE0;--card:#1B1E55;--line:#5B4C1E;--cta:#2FB574;--ctaink:#08210F;--bad:#E8695B;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#101238;--ink:#FFF3CF;--mute:#B9BAE0;--card:#1B1E55;--line:#5B4C1E;--cta:#2FB574;--ctaink:#08210F;--bad:#E8695B;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:flex;flex-direction:column;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.85 var(--bf)}
+h1{font-family:var(--hf);line-height:1.35;margin:0}
+p{margin:0}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.kasavu{height:14px;background:linear-gradient(var(--gold) 0 3px,transparent 3px 6px,var(--gold) 6px 8px,transparent 8px 10px,var(--gold) 10px 14px)}
+.top{background:var(--night);color:#FFF3CF;padding:16px 0}
+.top a{font:800 1.1rem var(--hf);color:var(--spark);text-decoration:none}
+main{flex:1;display:flex;align-items:center;padding:48px 0}
+.ty{max-width:620px;margin:0 auto;text-align:center;background:var(--card);border:1.5px solid var(--line);border-radius:6px 22px 6px 22px;padding:40px 26px}
+.mark{width:84px;height:84px;margin:0 auto 18px;border-radius:50%;background:var(--bad);display:grid;place-items:center;box-shadow:0 0 0 8px rgba(192,57,43,.15)}
+.mark svg{width:40px;height:40px}
+.mark path{stroke:#fff;stroke-width:6;fill:none;stroke-linecap:round}
+.ty h1{font-size:clamp(1.8rem,6vw,2.6rem);font-weight:800}
+.ty .sub{margin-top:12px;color:var(--mute)}
+.ref{display:none;margin:18px auto 0;padding:8px 16px;border:1.5px dashed var(--line);border-radius:10px;font:700 1rem var(--hf);word-break:break-all}
+.next{list-style:none;margin:24px 0 0;padding:0;text-align:left;display:grid;gap:10px;color:var(--mute);font-size:1rem;line-height:1.7}
+.next li{display:flex;gap:10px}
+.next li::before{content:"•";color:var(--gold);font-weight:700}
+.btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:24px}
+.btn{display:inline-block;padding:13px 24px;border-radius:12px;font:800 1.05rem var(--hf);text-decoration:none;background:var(--cta);color:var(--ctaink);border:2px solid transparent;min-height:48px}
+.btn.alt{background:transparent;color:var(--ink);border-color:currentColor}
+.btn:focus-visible,.site-footer a:focus-visible,.top a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.site-footer{background:var(--night);color:#FFF3CF;padding:30px 0 36px;text-align:center}
+.site-footer .fbrand{font:800 1.1rem var(--hf);color:var(--spark);margin-bottom:14px}
+.site-footer ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:4px 22px;max-width:52rem;margin:0 auto 14px;padding:0}
+.site-footer a{display:inline-block;padding:8px 2px;font:500 .92rem/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#E6E6FF;text-decoration:none;opacity:.88}
+.site-footer a:hover{opacity:1;color:var(--spark);text-decoration:underline}
+.site-footer small{display:block;font:400 .8rem/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#B9BAE0}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap"><a href="/">⚡ സ്പാർക്കോ</a></div></div>
+<div class="kasavu"></div>
+
+<main><div class="wrap">
+  <div class="ty" role="status">
+    <div class="mark" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M12 12l24 24M36 12L12 36"/></svg></div>
+    <h1>പേയ്മെന്റ് പൂർത്തിയായില്ല</h1>
+    <p class="sub">സാരമില്ല, നിങ്ങളുടെ ഓർഡർ പൂർത്തിയാക്കാൻ കഴിഞ്ഞില്ല. ഒന്നുകൂടി ശ്രമിക്കാം.</p>
+    <div class="ref" id="ref" lang="en"></div>
+
+    <ul class="next">
+      <li>പണം അക്കൗണ്ടിൽ നിന്ന് കുറഞ്ഞിട്ടുണ്ടെങ്കിൽ, സാധാരണ 5 മുതൽ 7 പ്രവൃത്തി ദിവസത്തിനുള്ളിൽ തിരികെ ലഭിക്കും.</li>
+      <li>വീണ്ടും ശ്രമിച്ചിട്ടും ശരിയായില്ലെങ്കിൽ ക്യാഷ് ഓൺ ഡെലിവറിക്ക് വാട്സ്ആപ്പിൽ ഓർഡർ ചെയ്യാം.</li>
+      <li>എന്ത് സംശയത്തിനും വാട്സ്ആപ്പിൽ ഞങ്ങളെ അറിയിക്കൂ.</li>
+    </ul>
+
+    <div class="btns">
+      <a class="btn" href="/#order">വീണ്ടും ശ്രമിക്കൂ</a>
+      <a class="btn alt" href="https://wa.me/919048191673?text=%E0%B4%8E%E0%B4%A8%E0%B4%BF%E0%B4%95%E0%B5%8D%E0%B4%95%E0%B5%8D%20%E0%B4%B8%E0%B5%8D%E0%B4%AA%E0%B4%BE%E0%B5%BC%E0%B4%95%E0%B5%8D%E0%B4%95%E0%B5%8B%20%E0%B4%AC%E0%B4%BE%E0%B4%B1%E0%B5%8D%E0%B4%B1%E0%B5%8D%20%E0%B4%B5%E0%B4%BE%E0%B4%99%E0%B5%8D%E0%B4%99%E0%B4%A3%E0%B4%82" rel="noopener">വാട്സ്ആപ്പിൽ ഓർഡർ ചെയ്യൂ</a>
+    </div>
+    <div class="btns" style="margin-top:12px">
+      <a class="btn alt" href="/">ഹോം പേജ്</a>
+    </div>
+  </div>
+</div></main>
+
+<div class="kasavu"></div>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="fbrand">⚡ സ്പാർക്കോ</div>
+    <nav aria-label="Policies and information" lang="en">
+      <ul>
+        <li><a href="contact-us.html">Contact Us</a></li>
+        <li><a href="terms-and-conditions.html">Terms &amp; Conditions</a></li>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="refund-policy.html">Refund Policy</a></li>
+        <li><a href="cancellation-policy.html">Cancellation Policy</a></li>
+        <li><a href="about-us.html">About Us</a></li>
+        <li><a href="shipping-and-delivery-policy.html">Shipping &amp; Delivery Policy</a></li>
+      </ul>
+    </nav>
+    <small lang="en">&copy; 2026 Azorex &middot; Tirur, Kerala, India</small>
+  </div>
+</footer>
+
+<script>
+(function(){
+  try {
+    var q = new URLSearchParams(location.search);
+    var id = q.get("order_id") || q.get("txnid") || q.get("mihpayid") || q.get("id");
+    if (id) {
+      var ref = document.getElementById("ref");
+      ref.textContent = "Reference: " + id;
+      ref.style.display = "inline-block";
+    }
+  } catch (e) {}
+})();
+</script>
+</body>
+</html>
