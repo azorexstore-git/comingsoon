@@ -254,7 +254,7 @@ body{font-size:1rem}}
       <div style="margin-top:12px"><b>₹499</b><s>₹899</s></div>
     </div>
     <!-- <a class="btn" id="wa" href="https://wa.me/919048191673?text=%E0%B4%8E%E0%B4%A8%E0%B4%BF%E0%B4%95%E0%B5%8D%E0%B4%95%E0%B5%8D%20%E0%B4%B8%E0%B5%8D%E0%B4%AA%E0%B4%BE%E0%B5%BC%E0%B4%95%E0%B5%8D%E0%B4%95%E0%B5%8B%20%E0%B4%AC%E0%B4%BE%E0%B4%B1%E0%B5%8D%E0%B4%B1%E0%B5%8D%20%E0%B4%B5%E0%B4%BE%E0%B4%99%E0%B5%8D%E0%B4%99%E0%B4%A3%E0%B4%82">വാട്സ്ആപ്പിൽ ഓർഡർ ചെയ്യൂ</a> -->
-    <a class="btn" id="wa" href=" https://u.payu.in/zIviK3Tm7omW">ഓർഡർ ചെയ്യൂ</a>
+    <a class="btn" id="wa" href="#order" role="button">ഓർഡർ ചെയ്യൂ</a>
   </div>
 </div></section>
 <div class="kasavu"></div>
@@ -324,6 +324,68 @@ body{font-size:1rem}}
   new IntersectionObserver(function(e,o){
     if(e[0].isIntersecting){setTimeout(function(){box.classList.remove('dur-pre')},150);o.disconnect()}
   },{threshold:.4}).observe(box);
+})();
+</script>
+<script>
+/* Shopify Buy Button SDK: checkout flow (replaces PayU link) */
+(function () {
+  var DOMAIN = 'frrsah-8k.myshopify.com';
+  var TOKEN = '8238134fe76be4fd2430c83fd37907ec';
+  var PRODUCT_ID = '16032072696094';
+  var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+  var client = null, sdkPromise = null;
+
+  function loadSDK() {
+    if (sdkPromise) return sdkPromise;
+    sdkPromise = new Promise(function (resolve, reject) {
+      if (window.ShopifyBuy) return resolve();
+      var s = document.createElement('script');
+      s.async = true; s.src = scriptURL;
+      s.onload = resolve; s.onerror = reject;
+      (document.head || document.body).appendChild(s);
+    });
+    return sdkPromise;
+  }
+  function getClient() {
+    if (!client) client = ShopifyBuy.buildClient({ domain: DOMAIN, storefrontAccessToken: TOKEN });
+    return client;
+  }
+  function numericId(id) {
+    try { id = atob(id); } catch (e) {}
+    return String(id).split('/').pop().split('?')[0];
+  }
+  function buyNow() {
+    return loadSDK().then(function () {
+      var c = getClient();
+      return c.product.fetch(btoa('gid://shopify/Product/' + PRODUCT_ID)).then(function (product) {
+        var variant = product.variants[0];
+        return c.checkout.create()
+          .then(function (checkout) {
+            return c.checkout.addLineItems(checkout.id, [{ variantId: variant.id, quantity: 1 }]);
+          })
+          .then(function (checkout) { window.location.href = checkout.webUrl; })
+          .catch(function () {
+            window.location.href = 'https://' + DOMAIN + '/cart/' + numericId(variant.id) + ':1';
+          });
+      });
+    });
+  }
+
+  var btn = document.getElementById('wa');
+  if (!btn) return;
+  btn.addEventListener('mouseenter', loadSDK, { once: true });
+  btn.addEventListener('touchstart', loadSDK, { once: true, passive: true });
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (btn.getAttribute('aria-busy') === 'true') return;
+    btn.setAttribute('aria-busy', 'true');
+    btn.style.opacity = '.7';
+    buyNow().catch(function () {
+      btn.removeAttribute('aria-busy'); btn.style.opacity = '';
+      alert('ക്ഷമിക്കണം, ചെക്ക്ഔട്ട് തുറക്കാനായില്ല. വീണ്ടും ശ്രമിക്കൂ.');
+    });
+  });
+  window.addEventListener('pageshow', function () { btn.removeAttribute('aria-busy'); btn.style.opacity = ''; });
 })();
 </script>
 </body>
