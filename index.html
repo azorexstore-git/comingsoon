@@ -133,6 +133,9 @@ details p{padding-bottom:14px;color:var(--mute)}
 section{padding:48px 0}
 body{font-size:1rem}}
 @media (prefers-reduced-motion:reduce){.mq{animation:none}html{scroll-behavior:auto}}
+#wa[aria-busy="true"]{pointer-events:none;cursor:progress}
+#wa[aria-busy="true"]::after{content:"";display:inline-block;width:1em;height:1em;margin-left:.6em;vertical-align:-.15em;border:2.5px solid currentColor;border-right-color:transparent;border-radius:50%;animation:wa-spin .7s linear infinite}
+@keyframes wa-spin{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
@@ -327,65 +330,60 @@ body{font-size:1rem}}
 })();
 </script>
 <script>
-/* Shopify Buy Button SDK: checkout flow (replaces PayU link) */
+/* Shopify checkout: prepared in the background on page load, so the click is an instant redirect */
 (function () {
   var DOMAIN = 'frrsah-8k.myshopify.com';
   var TOKEN = '8238134fe76be4fd2430c83fd37907ec';
   var PRODUCT_ID = '16032072696094';
-  var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
-  var client = null, sdkPromise = null;
-
-  function loadSDK() {
-    if (sdkPromise) return sdkPromise;
-    sdkPromise = new Promise(function (resolve, reject) {
-      if (window.ShopifyBuy) return resolve();
-      var s = document.createElement('script');
-      s.async = true; s.src = scriptURL;
-      s.onload = resolve; s.onerror = reject;
-      (document.head || document.body).appendChild(s);
-    });
-    return sdkPromise;
-  }
-  function getClient() {
-    if (!client) client = ShopifyBuy.buildClient({ domain: DOMAIN, storefrontAccessToken: TOKEN });
-    return client;
-  }
-  function numericId(id) {
-    try { id = atob(id); } catch (e) {}
-    return String(id).split('/').pop().split('?')[0];
-  }
-  function buyNow() {
-    return loadSDK().then(function () {
-      var c = getClient();
-      return c.product.fetch(btoa('gid://shopify/Product/' + PRODUCT_ID)).then(function (product) {
-        var variant = product.variants[0];
-        return c.checkout.create()
-          .then(function (checkout) {
-            return c.checkout.addLineItems(checkout.id, [{ variantId: variant.id, quantity: 1 }]);
-          })
-          .then(function (checkout) { window.location.href = checkout.webUrl; })
-          .catch(function () {
-            window.location.href = 'https://' + DOMAIN + '/cart/' + numericId(variant.id) + ':1';
-          });
-      });
-    });
-  }
-
+  var SDK = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
   var btn = document.getElementById('wa');
   if (!btn) return;
-  btn.addEventListener('mouseenter', loadSDK, { once: true });
-  btn.addEventListener('touchstart', loadSDK, { once: true, passive: true });
+
+  function loadSDK() {
+    return new Promise(function (res, rej) {
+      if (window.ShopifyBuy) return res();
+      var s = document.createElement('script');
+      s.async = true; s.src = SDK; s.onload = res; s.onerror = rej;
+      document.head.appendChild(s);
+    });
+  }
+
+  var readyUrl = null, pending = null;
+  function prepare() {
+    if (pending) return pending;
+    pending = loadSDK().then(function () {
+      var c = ShopifyBuy.buildClient({ domain: DOMAIN, storefrontAccessToken: TOKEN });
+      return c.product.fetch('gid://shopify/Product/' + PRODUCT_ID).then(function (p) {
+        if (!p || !p.variants || !p.variants.length) throw new Error('product not found');
+        var v = p.variants[0];
+        return c.checkout.create({ lineItems: [{ variantId: v.id, quantity: 1 }] })
+          .then(function (co) { return co.webUrl; });
+      });
+    }).then(function (url) { readyUrl = url; return url; })
+      .catch(function () { pending = null; throw 0; });
+    return pending;
+  }
+
+  /* start immediately (the SDK itself loads async, so this doesn't block the page) */
+  setTimeout(function () { prepare().catch(function () {}); }, 0);
+
   btn.addEventListener('click', function (e) {
     e.preventDefault();
     if (btn.getAttribute('aria-busy') === 'true') return;
-    btn.setAttribute('aria-busy', 'true');
-    btn.style.opacity = '.7';
-    buyNow().catch(function () {
-      btn.removeAttribute('aria-busy'); btn.style.opacity = '';
-      alert('ക്ഷമിക്കണം, ചെക്ക്ഔട്ട് തുറക്കാനായില്ല. വീണ്ടും ശ്രമിക്കൂ.');
-    });
+    btn.setAttribute('aria-busy', 'true'); /* spinner always shows on click */
+    if (readyUrl) {
+      /* checkout already prepared: let the spinner paint, then go (it stays until the next page loads) */
+      requestAnimationFrame(function () { setTimeout(function () { window.location.href = readyUrl; }, 60); });
+      return;
+    }
+    /* use the prepared checkout; if that attempt failed, create a fresh one now (one retry) */
+    prepare().catch(function () { return prepare(); })
+      .then(function (url) { window.location.href = url; })
+      .catch(function () {
+        window.location.href = 'index.html'; /* failure: go to main page */
+      });
   });
-  window.addEventListener('pageshow', function () { btn.removeAttribute('aria-busy'); btn.style.opacity = ''; });
+  window.addEventListener('pageshow', function () { btn.removeAttribute('aria-busy'); });
 })();
 </script>
 </body>
